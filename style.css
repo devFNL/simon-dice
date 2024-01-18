@@ -1,0 +1,39 @@
+.cuadro {
+  opacity: 0.2;
+  transition: opacity 500ms;
+}
+
+.activo {
+  opacity: 1;
+}
+
+.col {
+  width: 250px;
+  height: 250px;
+}
+
+#cuadros {
+  gap: 15px;
+}
+
+#cuadro1 {
+  background-color: rgb(240, 68, 68);
+}
+
+#cuadro2 {
+  background-color: rgb(95, 187, 95);
+}
+
+#cuadro3 {
+  background-color: rgb(79, 116, 216);
+}
+
+#cuadro4 {
+  background-color: rgb(245, 245, 76);
+}
+
+#mensaje {
+  font-size: 20px;
+  color: rgb(187, 187, 187);
+  font-weight: 100;
+}

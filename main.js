@@ -38,8 +38,8 @@ function manejarTurnoUsuario() {
   });
 }
 
-function manejarBoton(state) {
-  if (state) {
+function manejarBoton(habilitado) {
+  if (habilitado) {
     document.querySelector("#start").classList.remove("d-none");
   } else {
     document.querySelector("#start").classList.add("d-none");
@@ -67,12 +67,12 @@ function clickUsuario(event) {
   manejarResultado($nuevoCuadro);
 }
 
-function mostrarMensajes(valid) {
-  if (valid === "turnoBot") {
+function mostrarMensajes(turno) {
+  if (turno === "turnoBot") {
     mostrarMensaje("El bot está jugando");
     manejarBoton(false);
     bloquearUsuario();
-  } else if (valid === "turnoUsuario") {
+  } else if (turno === "turnoUsuario") {
     mostrarMensaje("Tu turno");
     manejarBoton(false);
   } else {
@@ -86,8 +86,8 @@ function mostrarMensaje(message) {
   document.querySelector("#mensaje").innerText = message;
 }
 
-function mostrarJugadas($sequence) {
-  $sequence.forEach(($cuadro, index) => {
+function mostrarJugadas($secuencia) {
+  $secuencia.forEach(($cuadro, index) => {
     const BOT_DELAY = index * 1000;
     setTimeout(function () {
       mostrarCuadrado($cuadro);
@@ -105,7 +105,7 @@ function mostrarCuadrado($cuadro) {
 function manejarResultado($cuadro) {
   const $cuadroBot = jugadasBot[jugadasUsuario.length - 1];
   if ($cuadroBot !== $cuadro) {
-    lose();
+    perder();
   } else {
     if (jugadasUsuario.length === jugadasBot.length) {
       setTimeout(function () {
@@ -115,12 +115,12 @@ function manejarResultado($cuadro) {
   }
 }
 
-function lose() {
+function perder() {
   mostrarMensajes();
-  restart();
+  reiniciar();
 }
 
-function restart() {
+function reiniciar() {
   jugadasBot = [];
   jugadasUsuario = [];
   rondas = 0;
